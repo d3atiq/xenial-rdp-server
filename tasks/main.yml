@@ -1,0 +1,5 @@
+---
+# tasks file for xenial-rdp-server
+
+- include_tasks: apt.yml
+

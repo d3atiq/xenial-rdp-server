@@ -1,0 +1,28 @@
+---
+# tasks file for bionic-rdp-server package installation
+
+- name: Add latest xrdp repository for Ubuntu 16.04
+  become: true
+  apt_repository:
+    repo: ppa:hermlnx/xrdp
+    state: present
+
+- name: Install RDP server apt packages
+  become: true
+  apt:
+    update_cache: true
+    name: "{{ item }}"
+    state: present
+  notify: start xrdp
+  with_items:
+    - xrdp
+
+- name: Install Ubuntu graphical environment apt packages
+  become: true
+  apt:
+    update_cache: true
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - ubuntu-desktop
+
