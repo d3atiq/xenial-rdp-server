@@ -11,18 +11,14 @@
   become: true
   apt:
     update_cache: true
-    name: "{{ item }}"
+    name: xrdp
     state: present
   notify: start xrdp
-  with_items:
-    - xrdp
 
 - name: Install Ubuntu graphical environment apt packages
   become: true
   apt:
     update_cache: true
-    name: "{{ item }}"
+    name: ubuntu-desktop
     state: present
-  with_items:
-    - ubuntu-desktop
 
